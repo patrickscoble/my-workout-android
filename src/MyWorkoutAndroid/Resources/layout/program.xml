@@ -10,7 +10,7 @@
         android:id="@+id/program_exercises_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        class="MyWorkoutAndroid.Fragments.Gym.ProgramExercisesFragment" />
+        class="MyWorkoutAndroid.Fragments.ProgramExercisesFragment" />
 
     <View
         android:id="@+id/program_exercises_workouts_divider"
@@ -20,6 +20,6 @@
         android:id="@+id/workouts_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        class="MyWorkoutAndroid.Fragments.Gym.WorkoutsFragment" />
+        class="MyWorkoutAndroid.Fragments.WorkoutsFragment" />
 
 </LinearLayout>
