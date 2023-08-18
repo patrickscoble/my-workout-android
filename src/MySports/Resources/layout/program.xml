@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <fragment
+        android:id="@+id/program_exercises_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        class="MySports.Fragments.Gym.ProgramExercisesFragment" />
+
+    <View
+        android:id="@+id/program_exercises_workouts_divider"
+        style="@style/HorizontalRule" />
+
+    <fragment
+        android:id="@+id/workouts_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        class="MySports.Fragments.Gym.WorkoutsFragment" />
+
+</LinearLayout>

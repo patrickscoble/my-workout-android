@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        style="@style/FormRow">
+
+        <TextView
+            android:id="@+id/update_workout_exercise_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:text="@string/update_workout_exercise_name" 
+            style="@style/FormLabel" />
+
+        <TextView
+            android:id="@+id/update_workout_exercise_name"
+            style="@style/FormInput" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/FormRow">
+
+        <TextView
+            android:text="@string/update_workout_exercise_sets" 
+            style="@style/FormLabel" />
+
+        <TextView
+            android:id="@+id/update_workout_exercise_sets"
+            style="@style/FormInput" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/FormRow">
+
+        <TextView
+            android:text="@string/update_workout_exercise_repetitions" 
+            style="@style/FormLabel" />
+
+        <TextView
+            android:id="@+id/update_workout_exercise_repetitions"
+            style="@style/FormInput" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/FormRow">
+
+        <TextView
+            android:text="@string/update_workout_exercise_rest_period" 
+            style="@style/FormLabel" />
+
+        <TextView
+            android:id="@+id/update_workout_exercise_rest_period"
+            style="@style/FormInput" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/FormRow">
+
+        <TextView
+            android:text="@string/update_workout_exercise_weight"
+            style="@style/FormLabel" />
+
+        <EditText
+            android:id="@+id/update_workout_exercise_weight"
+            android:inputType="text"
+            style="@style/FormInput" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/FormRow">
+
+        <TextView
+            android:text="@string/update_workout_exercise_maxed_out"
+            style="@style/FormLabel" />
+
+        <Switch
+            android:id="@+id/update_workout_exercise_maxed_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+</LinearLayout>
