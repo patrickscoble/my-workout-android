@@ -1,4 +1,4 @@
-# My Sports
+# My Workout Android
 This is an Android application for tracking exercise programs.
 
 Note: The app was originally based off the Gym module in the My Sports app.
