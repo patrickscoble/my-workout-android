@@ -18,17 +18,7 @@
 					android:id="@+id/nav_gym"
 					android:icon="@drawable/fitness_center_24"
 					android:title="Gym" />
-
-				<item
-					android:id="@+id/nav_mini_golf"
-					android:icon="@drawable/golf_course_24"
-					android:title="Mini Golf" />
-
-				<item
-					android:id="@+id/nav_tennis"
-					android:icon="@drawable/sports_tennis_24"
-					android:title="Tennis" />
-					
+				
 			</menu>
 			
 		</item>

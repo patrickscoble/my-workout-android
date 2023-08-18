@@ -5,9 +5,7 @@ using AndroidX.AppCompat.App;
 using AndroidX.Core.View;
 using AndroidX.DrawerLayout.Widget;
 using Google.Android.Material.Navigation;
-using MyWorkoutAndroid.Fragments.Gym;
-using MyWorkoutAndroid.Fragments.MiniGolf;
-using MyWorkoutAndroid.Fragments.Tennis;
+using MyWorkoutAndroid.Fragments;
 
 namespace MyWorkoutAndroid
 {
@@ -57,14 +55,6 @@ namespace MyWorkoutAndroid
             else if (id == Resource.Id.nav_gym)
             {
                 SupportFragmentManager.BeginTransaction().Replace(Resource.Id.container, new ProgramsFragment(), "programsFragment").Commit();
-            }
-            else if (id == Resource.Id.nav_mini_golf)
-            {
-                SupportFragmentManager.BeginTransaction().Replace(Resource.Id.container, new RoundsFragment(), "roundsFragment").Commit();
-            }
-            else if (id == Resource.Id.nav_tennis)
-            {
-                SupportFragmentManager.BeginTransaction().Replace(Resource.Id.container, new MatchesFragment(), "matchesFragment").Commit();
             }
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);

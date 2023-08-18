@@ -3,11 +3,11 @@ using System.Linq;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
-using MyWorkoutAndroid.Fragments.Gym;
+using MyWorkoutAndroid.Fragments;
 using MyWorkoutAndroid.Helpers;
-using MyWorkoutAndroid.Models.Gym;
+using MyWorkoutAndroid.Models;
 
-namespace MyWorkoutAndroid.Adapters.Gym
+namespace MyWorkoutAndroid.Adapters
 {
     public class WorkoutExercisesAdapter : SportAdapter<WorkoutExercise>
     {
@@ -16,11 +16,11 @@ namespace MyWorkoutAndroid.Adapters.Gym
         private DbHelper _dbHelper;
 
         public WorkoutExercisesAdapter(WorkoutExercisesFragment workoutExercisesFragment, List<WorkoutExercise> workoutExercises, Workout workout, DbHelper dbHelper)
-            : base (workoutExercises)
+            : base(workoutExercises)
         {
-            this._workoutExercisesFragment = workoutExercisesFragment;
-            this._workout = workout;
-            this._dbHelper = dbHelper;
+            _workoutExercisesFragment = workoutExercisesFragment;
+            _workout = workout;
+            _dbHelper = dbHelper;
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -43,10 +43,10 @@ namespace MyWorkoutAndroid.Adapters.Gym
                 View view = layoutInflater.Inflate(Resource.Layout.update_workout_exercise, null);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(_workoutExercisesFragment.Activity);
-				builder.SetTitle("Update Workout Exercise");
-				builder.SetView(view);
-				builder.SetPositiveButton("Update", _workoutExercisesFragment.UpdateWorkoutExerciseAction);
-				builder.SetNegativeButton("Cancel", _workoutExercisesFragment.CancelAction);
+                builder.SetTitle("Update Workout Exercise");
+                builder.SetView(view);
+                builder.SetPositiveButton("Update", _workoutExercisesFragment.UpdateWorkoutExerciseAction);
+                builder.SetNegativeButton("Cancel", _workoutExercisesFragment.CancelAction);
 
                 // Prepopulate the fields.
                 view.FindViewById<TextView>(Resource.Id.update_workout_exercise_id).Text = workoutExercise.Id.ToString();

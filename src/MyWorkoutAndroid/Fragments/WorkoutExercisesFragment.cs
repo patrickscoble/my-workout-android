@@ -6,11 +6,11 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using AndroidX.Core.View;
-using MyWorkoutAndroid.Adapters.Gym;
-using MyWorkoutAndroid.Models.Gym;
+using MyWorkoutAndroid.Adapters;
+using MyWorkoutAndroid.Models;
 using Newtonsoft.Json;
 
-namespace MyWorkoutAndroid.Fragments.Gym
+namespace MyWorkoutAndroid.Fragments
 {
     public class WorkoutExercisesFragment : SportFragment, IMenuProvider
     {
@@ -23,18 +23,18 @@ namespace MyWorkoutAndroid.Fragments.Gym
                 _workout = JsonConvert.DeserializeObject<Workout>(Arguments.GetString("@string/workout"));
             }
 
-			Activity.AddMenuProvider(this);
+            Activity.AddMenuProvider(this);
 
-			return inflater.Inflate(Resource.Layout.workout_exercises, container, false);
+            return inflater.Inflate(Resource.Layout.workout_exercises, container, false);
         }
 
-		public override void OnDestroyView()
-		{
-			Activity.RemoveMenuProvider(this);
-			base.OnDestroyView();
-		}
+        public override void OnDestroyView()
+        {
+            Activity.RemoveMenuProvider(this);
+            base.OnDestroyView();
+        }
 
-		public void OnCreateMenu(IMenu menu, MenuInflater inflater)
+        public void OnCreateMenu(IMenu menu, MenuInflater inflater)
         {
             inflater.Inflate(Resource.Menu.workout_exercises_menu, menu);
         }
@@ -44,41 +44,41 @@ namespace MyWorkoutAndroid.Fragments.Gym
             switch (item.ItemId)
             {
                 case Resource.Id.action_copy:
-                {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
-                    builder.SetTitle("Copy Workout");
-                    builder.SetPositiveButton("Copy", CopyWorkoutAction);
-                    builder.SetNegativeButton("Cancel", CancelAction);
-
-                    builder.Show();
-                    return true;
-                }
-                case Resource.Id.action_edit:
-                {
-                    LayoutInflater layoutInflater = LayoutInflater.From(Activity);
-                    View view = layoutInflater.Inflate(Resource.Layout.create_update_workout, null);
-
-                    DateEditText = view.FindViewById<EditText>(Resource.Id.create_update_workout_date);
-                    DateEditText.Text = _workout.Date;
-                    DateEditText.Click += delegate
                     {
-                        OnClickDateEditText();
-                    };
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
+                        builder.SetTitle("Copy Workout");
+                        builder.SetPositiveButton("Copy", CopyWorkoutAction);
+                        builder.SetNegativeButton("Cancel", CancelAction);
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
-                    builder.SetTitle("Update Workout");
-                    builder.SetView(view);
-                    builder.SetPositiveButton("Update", UpdateWorkoutAction);
-                    builder.SetNeutralButton("Delete", DeleteWorkoutAction);
-                    builder.SetNegativeButton("Cancel", CancelAction);
+                        builder.Show();
+                        return true;
+                    }
+                case Resource.Id.action_edit:
+                    {
+                        LayoutInflater layoutInflater = LayoutInflater.From(Activity);
+                        View view = layoutInflater.Inflate(Resource.Layout.create_update_workout, null);
 
-                    // Prepopulate the fields.
-                    view.FindViewById<TextView>(Resource.Id.create_update_workout_id).Text = _workout.Id.ToString();
-                    view.FindViewById<EditText>(Resource.Id.create_update_workout_date).Text = _workout.Date;
+                        DateEditText = view.FindViewById<EditText>(Resource.Id.create_update_workout_date);
+                        DateEditText.Text = _workout.Date;
+                        DateEditText.Click += delegate
+                        {
+                            OnClickDateEditText();
+                        };
 
-                    builder.Show();
-                    return true;
-                }
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
+                        builder.SetTitle("Update Workout");
+                        builder.SetView(view);
+                        builder.SetPositiveButton("Update", UpdateWorkoutAction);
+                        builder.SetNeutralButton("Delete", DeleteWorkoutAction);
+                        builder.SetNegativeButton("Cancel", CancelAction);
+
+                        // Prepopulate the fields.
+                        view.FindViewById<TextView>(Resource.Id.create_update_workout_id).Text = _workout.Id.ToString();
+                        view.FindViewById<EditText>(Resource.Id.create_update_workout_date).Text = _workout.Date;
+
+                        builder.Show();
+                        return true;
+                    }
             }
             return false;
         }

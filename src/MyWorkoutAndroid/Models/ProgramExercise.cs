@@ -1,4 +1,4 @@
-﻿namespace MyWorkoutAndroid.Models.Gym
+﻿namespace MyWorkoutAndroid.Models
 {
     public class ProgramExercise
     {

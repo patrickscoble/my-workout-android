@@ -4,10 +4,10 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using MyWorkoutAndroid.Adapters.Gym;
-using MyWorkoutAndroid.Models.Gym;
+using MyWorkoutAndroid.Adapters;
+using MyWorkoutAndroid.Models;
 
-namespace MyWorkoutAndroid.Fragments.Gym
+namespace MyWorkoutAndroid.Fragments
 {
     public class WorkoutsFragment : SportFragment
     {
@@ -38,12 +38,12 @@ namespace MyWorkoutAndroid.Fragments.Gym
             };
 
             AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
-			builder.SetTitle("Create Workout");
-			builder.SetView(view);
-			builder.SetPositiveButton("Create", CreateWorkoutAction);
-			builder.SetNegativeButton("Cancel", CancelAction);
+            builder.SetTitle("Create Workout");
+            builder.SetView(view);
+            builder.SetPositiveButton("Create", CreateWorkoutAction);
+            builder.SetNegativeButton("Cancel", CancelAction);
 
-			builder.Show();
+            builder.Show();
         }
 
         private void CreateWorkoutAction(object sender, DialogClickEventArgs e)

@@ -2,19 +2,19 @@
 using Android.Content;
 using Android.Views;
 using Android.Widget;
-using MyWorkoutAndroid.Fragments.Gym;
-using MyWorkoutAndroid.Models.Gym;
+using MyWorkoutAndroid.Fragments;
+using MyWorkoutAndroid.Models;
 
-namespace MyWorkoutAndroid.Adapters.Gym
+namespace MyWorkoutAndroid.Adapters
 {
     public class ProgramExercisesAdapter : SportAdapter<ProgramExercise>
     {
         private ProgramExercisesFragment _programExercisesFragment;
 
         public ProgramExercisesAdapter(ProgramExercisesFragment programExercisesFragment, List<ProgramExercise> programExercises)
-            : base (programExercises)
+            : base(programExercises)
         {
-            this._programExercisesFragment = programExercisesFragment;
+            _programExercisesFragment = programExercisesFragment;
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -33,12 +33,12 @@ namespace MyWorkoutAndroid.Adapters.Gym
                 LayoutInflater layoutInflater = LayoutInflater.From(_programExercisesFragment.Activity);
                 View view = layoutInflater.Inflate(Resource.Layout.create_update_program_exercise, null);
 
-				AlertDialog.Builder builder = new AlertDialog.Builder(_programExercisesFragment.Activity);
-				builder.SetTitle("Update Program Exercise");
-				builder.SetView(view);
-				builder.SetPositiveButton("Update", _programExercisesFragment.UpdateProgramExerciseAction);
-				builder.SetNeutralButton("Delete", _programExercisesFragment.DeleteProgramExerciseAction);
-				builder.SetNegativeButton("Cancel", _programExercisesFragment.CancelAction);
+                AlertDialog.Builder builder = new AlertDialog.Builder(_programExercisesFragment.Activity);
+                builder.SetTitle("Update Program Exercise");
+                builder.SetView(view);
+                builder.SetPositiveButton("Update", _programExercisesFragment.UpdateProgramExerciseAction);
+                builder.SetNeutralButton("Delete", _programExercisesFragment.DeleteProgramExerciseAction);
+                builder.SetNegativeButton("Cancel", _programExercisesFragment.CancelAction);
 
                 // Prepopulate the fields.
                 view.FindViewById<TextView>(Resource.Id.create_update_program_exercise_id).Text = programExercise.Id.ToString();

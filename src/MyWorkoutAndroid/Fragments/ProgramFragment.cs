@@ -4,10 +4,11 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using AndroidX.Core.View;
-using MyWorkoutAndroid.Models.Gym;
+using MyWorkoutAndroid.Fragments;
+using MyWorkoutAndroid.Models;
 using Newtonsoft.Json;
 
-namespace MyWorkoutAndroid.Fragments.Gym
+namespace MyWorkoutAndroid.Fragments
 {
     public class ProgramFragment : SportFragment, IMenuProvider
     {
@@ -25,18 +26,18 @@ namespace MyWorkoutAndroid.Fragments.Gym
                 Program = JsonConvert.DeserializeObject<Program>(Arguments.GetString("@string/program"));
             }
 
-			Activity.AddMenuProvider(this);
+            Activity.AddMenuProvider(this);
 
-			return inflater.Inflate(Resource.Layout.program, container, false);
+            return inflater.Inflate(Resource.Layout.program, container, false);
         }
 
-		public override void OnDestroyView()
-		{
-			Activity.RemoveMenuProvider(this);
-			base.OnDestroyView();
-		}
+        public override void OnDestroyView()
+        {
+            Activity.RemoveMenuProvider(this);
+            base.OnDestroyView();
+        }
 
-		public void OnCreateMenu(IMenu menu, MenuInflater inflater)
+        public void OnCreateMenu(IMenu menu, MenuInflater inflater)
         {
             inflater.Inflate(Resource.Menu.program_menu, menu);
         }
@@ -46,33 +47,33 @@ namespace MyWorkoutAndroid.Fragments.Gym
             switch (item.ItemId)
             {
                 case Resource.Id.action_copy:
-                {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
-                    builder.SetTitle("Copy Program");
-                    builder.SetPositiveButton("Copy", CopyProgramAction);
-                    builder.SetNegativeButton("Cancel", CancelAction);
+                    {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
+                        builder.SetTitle("Copy Program");
+                        builder.SetPositiveButton("Copy", CopyProgramAction);
+                        builder.SetNegativeButton("Cancel", CancelAction);
 
-                    builder.Show();
-                    return true;
-                }
+                        builder.Show();
+                        return true;
+                    }
                 case Resource.Id.action_edit:
-                {
-                    LayoutInflater layoutInflater = LayoutInflater.From(Activity);
-                    View view = layoutInflater.Inflate(Resource.Layout.create_update_program, null);
+                    {
+                        LayoutInflater layoutInflater = LayoutInflater.From(Activity);
+                        View view = layoutInflater.Inflate(Resource.Layout.create_update_program, null);
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
-                    builder.SetTitle("Update Program");
-                    builder.SetView(view);
-                    builder.SetPositiveButton("Update", UpdateProgramAction);
-                    builder.SetNeutralButton("Delete", DeleteProgramAction);
-                    builder.SetNegativeButton("Cancel", CancelAction);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Activity);
+                        builder.SetTitle("Update Program");
+                        builder.SetView(view);
+                        builder.SetPositiveButton("Update", UpdateProgramAction);
+                        builder.SetNeutralButton("Delete", DeleteProgramAction);
+                        builder.SetNegativeButton("Cancel", CancelAction);
 
-                    view.FindViewById<TextView>(Resource.Id.create_update_program_id).Text = Program.Id.ToString();
-                    view.FindViewById<EditText>(Resource.Id.create_update_program_name).Text = Program.Name;
+                        view.FindViewById<TextView>(Resource.Id.create_update_program_id).Text = Program.Id.ToString();
+                        view.FindViewById<EditText>(Resource.Id.create_update_program_name).Text = Program.Name;
 
-                    builder.Show();
-                    return true;
-                }
+                        builder.Show();
+                        return true;
+                    }
             }
             return false;
         }

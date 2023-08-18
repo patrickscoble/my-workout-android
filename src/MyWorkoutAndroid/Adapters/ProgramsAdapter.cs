@@ -3,11 +3,11 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using MyWorkoutAndroid.Fragments.Gym;
-using MyWorkoutAndroid.Models.Gym;
+using MyWorkoutAndroid.Fragments;
+using MyWorkoutAndroid.Models;
 using Newtonsoft.Json;
 
-namespace MyWorkoutAndroid.Adapters.Gym
+namespace MyWorkoutAndroid.Adapters
 {
     public class ProgramsAdapter : SportAdapter<Program>
     {
