@@ -11,7 +11,7 @@ using MyWorkoutAndroid.Fragments.Tennis;
 
 namespace MyWorkoutAndroid
 {
-    [Activity(Label = "@string/app_name", Theme ="@style/AppTheme.NoActionBar", MainLauncher = true, Icon = "@drawable/sports_tennis_48")]
+    [Activity(Label = "@string/app_name", Theme ="@style/AppTheme.NoActionBar", MainLauncher = true, Icon = "@drawable/fitness_center_48")]
     public class MainActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         protected override void OnCreate(Bundle savedInstanceState)
