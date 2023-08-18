@@ -17,7 +17,7 @@ namespace MyWorkoutAndroid
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
-            SupportFragmentManager.BeginTransaction().Add(Resource.Id.container, new HomeFragment(), "homeFragment").Commit();
+            SupportFragmentManager.BeginTransaction().Add(Resource.Id.container, new ProgramsFragment(), "programsFragment").Commit();
 
             AndroidX.AppCompat.Widget.Toolbar toolbar = FindViewById<AndroidX.AppCompat.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
