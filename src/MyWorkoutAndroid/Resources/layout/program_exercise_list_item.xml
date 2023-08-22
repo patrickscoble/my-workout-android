@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="8dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="8dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/program_exercise_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/program_exercise_rest_period"
+            android:paddingRight="32dp"
             android:text="@string/program_exercise_name"
             android:textSize="20dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-           
+
         <TextView
-            android:id="@+id/program_exercise_sets_repetitions"
+            android:id="@+id/program_exercise_rest_period"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/program_exercise_sets_repetitions"
-            android:textSize="16dp" />
+            android:layout_alignParentRight="true"
+            android:text="@string/program_exercise_rest_period"
+            android:textSize="20dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/program_exercise_rest_period"
+        android:id="@+id/program_exercise_sets_repetitions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:paddingRight="8dp"
-        android:text="@string/program_exercise_rest_period"
-        android:textSize="20dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:text="@string/program_exercise_sets_repetitions"
+        android:textSize="16dp" />
 
-</RelativeLayout>
+</LinearLayout>

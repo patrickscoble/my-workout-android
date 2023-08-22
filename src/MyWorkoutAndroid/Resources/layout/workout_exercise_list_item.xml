@@ -1,46 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp">
+    android:orientation="vertical"
+    android:paddingTop="8dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="8dp"
+    android:paddingLeft="16dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="8dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/workout_exercise_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/workout_exercise_rest_period"
+            android:paddingRight="32dp"
             android:text="@string/workout_exercise_name"
             android:textSize="20dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-           
-        <TextView
-            android:id="@+id/workout_exercise_sets_repetitions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/workout_exercise_sets_repetitions"
-            android:textSize="16dp" />
-
-        <TextView
-            android:id="@+id/workout_exercise_weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/workout_exercise_weight"
-            android:textSize="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:orientation="vertical"
-        android:paddingRight="8dp">
 
         <TextView
             android:id="@+id/workout_exercise_rest_period"
@@ -51,14 +31,40 @@
             android:textSize="20dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"
+        android:paddingRight="8dp">
+
+        <TextView
+            android:id="@+id/workout_exercise_sets_repetitions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/workout_exercise_sets_repetitions"
+            android:textSize="16dp" />
+
         <ImageView
             android:id="@+id/workout_exercise_maxed_out"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:tint="@android:color/holo_blue_light"
             android:src="@drawable/keyboard_double_arrow_up_40"
             android:contentDescription="@string/workout_exercise_maxed_out_content_description" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/workout_exercise_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/workout_exercise_weight"
+        android:textSize="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+</LinearLayout>
