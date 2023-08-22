@@ -1,0 +1,116 @@
+[
+  {
+    "programId": 1,
+    "name": "Squats or Bulgarian Split Squats",
+    "sets": 3,
+    "repetitions": "4-6, 6-8, 8-10",
+    "restPeriod": "3 min"
+  },
+  {
+    "programId": 1,
+    "name": "Romanian Deadlifts",
+    "sets": 3,
+    "repetitions": "6-8, 8-10, 10-12",
+    "restPeriod": "3 min"
+  },
+  {
+    "programId": 1,
+    "name": "Leg Extensions",
+    "sets": 3,
+    "repetitions": "8-10, 10-12, 12-15",
+    "restPeriod": "2 min"
+  },
+  {
+    "programId": 1,
+    "name": "Calf Raises",
+    "sets": 3,
+    "repetitions": "10-15",
+    "restPeriod": "2 min"
+  },
+  {
+    "programId": 1,
+    "name": "Hanging Leg Raises",
+    "sets": 3,
+    "repetitions": "10-15",
+    "restPeriod": "2 min"
+  },
+  {
+    "programId": 1,
+    "name": "Ab Wheel Rollouts",
+    "sets": 3,
+    "repetitions": "10-15",
+    "restPeriod": "2 min"
+  },
+
+  {
+    "programId": 2,
+    "name": "Incline Barbell Bench Press",
+    "sets": 3,
+    "repetitions": "4-6, 6-8, 8-10",
+    "restPeriod": "3 min"
+  },
+  {
+    "programId": 2,
+    "name": "Flat Barbell Bench Press",
+    "sets": 3,
+    "repetitions": "4-6, 6-8, 8-10",
+    "restPeriod": "3 min"
+  },
+  {
+    "programId": 2,
+    "name": "Cable Rows",
+    "sets": 1,
+    "repetitions": "12-15 + 4 x 3-5",
+    "restPeriod": "N/A"
+  },
+  {
+    "programId": 2,
+    "name": "Incline Dumbbell Curls",
+    "sets": 3,
+    "repetitions": "4-6, 6-8, 8-10",
+    "restPeriod": "2 min"
+  },
+  {
+    "programId": 2,
+    "name": "Cable Rope Pushdowns",
+    "sets": 3,
+    "repetitions": "6-8, 8-10, 10-12",
+    "restPeriod": "2 min"
+  },
+
+  {
+    "programId": 3,
+    "name": "Weighted Pullups",
+    "sets": 3,
+    "repetitions": "4-6, 6-8, 8-10",
+    "restPeriod": "3 min"
+  },
+  {
+    "programId": 3,
+    "name": "Standing Barbell Press",
+    "sets": 3,
+    "repetitions": "4-6, 6-8, 8-10",
+    "restPeriod": "3 min"
+  },
+  {
+    "programId": 3,
+    "name": "Bent-Over Dumbbell Rows",
+    "sets": 3,
+    "repetitions": "4-6, 6-8, 8-10",
+    "restPeriod": "3 min"
+  },
+  {
+    "programId": 3,
+    "name": "Incline Dumbbell Flyes",
+    "sets": 1,
+    "repetitions": "12-15 + 4 x 3-5",
+    "restPeriod": "N/A"
+  },
+  {
+    "programId": 3,
+    "name": "Lateral Raises",
+    "sets": 3,
+    "repetitions": "10-15",
+    "restPeriod": "2 min"
+  }
+]

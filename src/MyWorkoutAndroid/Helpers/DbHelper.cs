@@ -3,6 +3,7 @@ using Android.Content;
 using Android.Database;
 using Android.Database.Sqlite;
 using MyWorkoutAndroid.Models;
+using Newtonsoft.Json;
 
 namespace MyWorkoutAndroid.Helpers
 {
@@ -37,9 +38,21 @@ namespace MyWorkoutAndroid.Helpers
         private static string DB_WORKOUT_EXERCISE_COLUMN_WEIGHT = "Weight";
         private static string DB_WORKOUT_EXERCISE_COLUMN_MAXED_OUT = "MaxedOut";
 
+        private static string _programsData;
+        private static string _programExercisesData;
+
         public DbHelper(Context context)
             : base(context, DB_NAME, null, DB_VERSION)
         {
+            using (StreamReader reader = new StreamReader(context.Assets.Open("Data/programs.json")))
+            {
+                _programsData = reader.ReadToEnd();
+            }
+
+            using (StreamReader reader = new StreamReader(context.Assets.Open("Data/programExercises.json")))
+            {
+                _programExercisesData = reader.ReadToEnd();
+            }
         }
 
         public override void OnCreate(SQLiteDatabase db)
@@ -55,6 +68,30 @@ namespace MyWorkoutAndroid.Helpers
 
             query = $"CREATE TABLE {DB_TABLE_WORKOUT_EXERCISE} ({DB_WORKOUT_EXERCISE_COLUMN_ID} INTEGER PRIMARY KEY AUTOINCREMENT, {DB_WORKOUT_EXERCISE_COLUMN_WORKOUT_ID} INTEGER NOT NULL, {DB_WORKOUT_EXERCISE_COLUMN_PROGRAM_EXERCISE_ID} INTEGER NOT NULL, {DB_WORKOUT_EXERCISE_COLUMN_WEIGHT} TEXT NOT NULL, {DB_WORKOUT_EXERCISE_COLUMN_MAXED_OUT} BOOLEAN NOT NULL, CONSTRAINT FK_WorkoutId FOREIGN KEY ({DB_WORKOUT_EXERCISE_COLUMN_WORKOUT_ID}) REFERENCES {DB_TABLE_WORKOUT}({DB_WORKOUT_COLUMN_ID}), CONSTRAINT FK_ProgramExerciseId FOREIGN KEY ({DB_WORKOUT_EXERCISE_COLUMN_PROGRAM_EXERCISE_ID}) REFERENCES {DB_TABLE_PROGRAM_EXERCISE}({DB_PROGRAM_EXERCISE_COLUMN_ID}));";
             db.ExecSQL(query);
+
+            // Preopulate the DB with default program data.
+            List<Program> programs = JsonConvert.DeserializeObject<List<Program>>(_programsData);
+            foreach (Program program in programs)
+            {
+                ContentValues values = new ContentValues();
+                values.Put(DB_PROGRAM_COLUMN_NAME, program.Name);
+                values.Put(DB_PROGRAM_COLUMN_DURATION_IN_WEEKS, program.DurationInWeeks.ToString());
+                values.Put(DB_PROGRAM_COLUMN_FREQUENCY_PER_WEEK, program.FrequencyPerWeek.ToString());
+                db.Insert(DB_TABLE_PROGRAM, null, values);
+            }
+
+            // Preopulate the DB with default program exercise data.
+            List<ProgramExercise> programExercises = JsonConvert.DeserializeObject<List<ProgramExercise>>(_programExercisesData);
+            foreach (ProgramExercise programExercise in programExercises)
+            {
+                ContentValues values = new ContentValues();
+                values.Put(DB_PROGRAM_EXERCISE_COLUMN_PROGRAM_ID, programExercise.ProgramId);
+                values.Put(DB_PROGRAM_EXERCISE_COLUMN_NAME, programExercise.Name);
+                values.Put(DB_PROGRAM_EXERCISE_COLUMN_SETS, programExercise.Sets);
+                values.Put(DB_PROGRAM_EXERCISE_COLUMN_REPETITIONS, programExercise.Repetitions);
+                values.Put(DB_PROGRAM_EXERCISE_COLUMN_REST_PERIOD, programExercise.RestPeriod);
+                db.Insert(DB_TABLE_PROGRAM_EXERCISE, null, values);
+            }
         }
 
         public override void OnUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
