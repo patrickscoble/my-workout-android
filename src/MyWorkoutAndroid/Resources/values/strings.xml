@@ -22,6 +22,8 @@
 	<string name="program_exercise_sets_repetitions">3 x 4-6, 6-8, 8-10</string>
 	<string name="program">program</string>
 	<string name="program_name">Chest/Arms</string>
+	<string name="program_duration_in_weeks">6 weeks</string>
+	<string name="program_progress">5 / 18</string>
 	<string name="update_workout_exercise_name">Name:</string>
 	<string name="update_workout_exercise_sets">Sets:</string>
 	<string name="update_workout_exercise_repetitions">Repetitions:</string>
@@ -34,4 +36,6 @@
 	<string name="create_update_program_exercise_rest_period">Rest Period:</string>
 	<string name="create_update_workout_date">Date:</string>
 	<string name="create_update_program_name">Name:</string>
+	<string name="create_update_program_duration_in_weeks">Duration (# of Weeks):</string>
+	<string name="create_update_program_frequency_per_week">Frequency (# per Week):</string>
 </resources>

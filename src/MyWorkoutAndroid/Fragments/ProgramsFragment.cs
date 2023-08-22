@@ -57,10 +57,14 @@ namespace MyWorkoutAndroid.Fragments
             AlertDialog alertDialog = (AlertDialog)sender;
 
             string name = alertDialog.FindViewById<EditText>(Resource.Id.create_update_program_name).Text;
+            string durationInWeeks = alertDialog.FindViewById<EditText>(Resource.Id.create_update_program_duration_in_weeks).Text;
+            string frequencyPerWeek = alertDialog.FindViewById<EditText>(Resource.Id.create_update_program_frequency_per_week).Text;
 
             Program program = new Program()
             {
-                Name = name
+                Name = name,
+                DurationInWeeks = Convert.ToInt32(durationInWeeks),
+                FrequencyPerWeek = Convert.ToInt32(frequencyPerWeek),
             };
 
             DbHelper.CreateProgram(program);
@@ -72,7 +76,7 @@ namespace MyWorkoutAndroid.Fragments
             Activity.Title = Resources.GetString(Resource.String.title_gym);
 
             List<Program> programs = DbHelper.GetPrograms();
-            ProgramsAdapter programsAdapter = new ProgramsAdapter(this, programs);
+            ProgramsAdapter programsAdapter = new ProgramsAdapter(this, programs, DbHelper);
             ListView.Adapter = programsAdapter;
         }
     }

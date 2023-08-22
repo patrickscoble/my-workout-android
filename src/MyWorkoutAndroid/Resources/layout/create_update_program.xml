@@ -24,4 +24,34 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        style="@style/FormRow">
+
+        <TextView
+            android:text="@string/create_update_program_duration_in_weeks" 
+            style="@style/FormLabel" />
+
+        <EditText
+            android:id="@+id/create_update_program_duration_in_weeks"
+            android:layout_width="112dp"
+            android:inputType="text"
+            style="@style/FormInput" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/FormRow">
+
+        <TextView
+            android:text="@string/create_update_program_frequency_per_week" 
+            style="@style/FormLabel" />
+
+        <EditText
+            android:id="@+id/create_update_program_frequency_per_week"
+            android:layout_width="112dp"
+            android:inputType="text"
+            style="@style/FormInput" />
+
+    </RelativeLayout>
+
 </LinearLayout>

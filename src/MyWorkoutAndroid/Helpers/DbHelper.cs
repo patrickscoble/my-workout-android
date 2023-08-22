@@ -14,6 +14,8 @@ namespace MyWorkoutAndroid.Helpers
         private static string DB_TABLE_PROGRAM = "GymProgram";
         private static string DB_PROGRAM_COLUMN_ID = "Id";
         private static string DB_PROGRAM_COLUMN_NAME = "Name";
+        private static string DB_PROGRAM_COLUMN_DURATION_IN_WEEKS = "DurationInWeeks";
+        private static string DB_PROGRAM_COLUMN_FREQUENCY_PER_WEEK = "FrequencyPerWeek";
 
         private static string DB_TABLE_PROGRAM_EXERCISE = "GymProgramExercise";
         private static string DB_PROGRAM_EXERCISE_COLUMN_ID = "Id";
@@ -42,7 +44,7 @@ namespace MyWorkoutAndroid.Helpers
 
         public override void OnCreate(SQLiteDatabase db)
         {
-            string query = $"CREATE TABLE {DB_TABLE_PROGRAM} ({DB_PROGRAM_COLUMN_ID} INTEGER PRIMARY KEY AUTOINCREMENT, {DB_PROGRAM_COLUMN_NAME} TEXT NOT NULL);";
+            string query = $"CREATE TABLE {DB_TABLE_PROGRAM} ({DB_PROGRAM_COLUMN_ID} INTEGER PRIMARY KEY AUTOINCREMENT, {DB_PROGRAM_COLUMN_NAME} TEXT NOT NULL, {DB_PROGRAM_COLUMN_DURATION_IN_WEEKS} INTEGER NOT NULL, {DB_PROGRAM_COLUMN_FREQUENCY_PER_WEEK} INTEGER NOT NULL);";
             db.ExecSQL(query);
 
             query = $"CREATE TABLE {DB_TABLE_PROGRAM_EXERCISE} ({DB_PROGRAM_EXERCISE_COLUMN_ID} INTEGER PRIMARY KEY AUTOINCREMENT, {DB_PROGRAM_EXERCISE_COLUMN_PROGRAM_ID} INTEGER NOT NULL, {DB_PROGRAM_EXERCISE_COLUMN_NAME} TEXT NOT NULL, {DB_PROGRAM_EXERCISE_COLUMN_SETS} INTEGER NOT NULL, {DB_PROGRAM_EXERCISE_COLUMN_REPETITIONS} TEXT NOT NULL, {DB_PROGRAM_EXERCISE_COLUMN_REST_PERIOD} TEXT NOT NULL, CONSTRAINT FK_ProgramId FOREIGN KEY ({DB_PROGRAM_EXERCISE_COLUMN_PROGRAM_ID}) REFERENCES {DB_TABLE_PROGRAM}({DB_PROGRAM_COLUMN_ID}));";
@@ -76,7 +78,7 @@ namespace MyWorkoutAndroid.Helpers
         {
             List<Program> programs = new List<Program>();
             SQLiteDatabase db = this.ReadableDatabase;
-            ICursor cursor = db.Query(DB_TABLE_PROGRAM, new string[] { DB_PROGRAM_COLUMN_ID, DB_PROGRAM_COLUMN_NAME }, null, null, null, null, null);
+            ICursor cursor = db.Query(DB_TABLE_PROGRAM, new string[] { DB_PROGRAM_COLUMN_ID, DB_PROGRAM_COLUMN_NAME, DB_PROGRAM_COLUMN_DURATION_IN_WEEKS, DB_PROGRAM_COLUMN_FREQUENCY_PER_WEEK }, null, null, null, null, null);
 
             while (cursor.MoveToNext())
             {
@@ -86,10 +88,18 @@ namespace MyWorkoutAndroid.Helpers
                 int nameIndex = cursor.GetColumnIndex(DB_PROGRAM_COLUMN_NAME);
                 string name = cursor.GetString(nameIndex);
 
+                int durationInWeeksIndex = cursor.GetColumnIndex(DB_PROGRAM_COLUMN_DURATION_IN_WEEKS);
+                int durationInWeeks = cursor.GetInt(durationInWeeksIndex);
+
+                int frequencyPerWeekIndex = cursor.GetColumnIndex(DB_PROGRAM_COLUMN_FREQUENCY_PER_WEEK);
+                int frequencyPerWeek = cursor.GetInt(frequencyPerWeekIndex);
+
                 programs.Add(new Program()
                 {
                     Id = id,
-                    Name = name
+                    Name = name,
+                    DurationInWeeks = durationInWeeks,
+                    FrequencyPerWeek = frequencyPerWeek,
                 });
             }
 
@@ -101,6 +111,8 @@ namespace MyWorkoutAndroid.Helpers
             SQLiteDatabase db = this.WritableDatabase;
             ContentValues values = new ContentValues();
             values.Put(DB_PROGRAM_COLUMN_NAME, program.Name);
+            values.Put(DB_PROGRAM_COLUMN_DURATION_IN_WEEKS, program.DurationInWeeks);
+            values.Put(DB_PROGRAM_COLUMN_FREQUENCY_PER_WEEK, program.FrequencyPerWeek);
             db.Insert(DB_TABLE_PROGRAM, null, values);
             db.Close();
         }
@@ -110,6 +122,8 @@ namespace MyWorkoutAndroid.Helpers
             SQLiteDatabase db = this.WritableDatabase;
             ContentValues values = new ContentValues();
             values.Put(DB_PROGRAM_COLUMN_NAME, program.Name);
+            values.Put(DB_PROGRAM_COLUMN_DURATION_IN_WEEKS, program.DurationInWeeks);
+            values.Put(DB_PROGRAM_COLUMN_FREQUENCY_PER_WEEK, program.FrequencyPerWeek);
             long programId = db.Insert(DB_TABLE_PROGRAM, null, values);
             db.Close();
 
@@ -134,6 +148,8 @@ namespace MyWorkoutAndroid.Helpers
             SQLiteDatabase db = this.WritableDatabase;
             ContentValues values = new ContentValues();
             values.Put(DB_PROGRAM_COLUMN_NAME, program.Name);
+            values.Put(DB_PROGRAM_COLUMN_DURATION_IN_WEEKS, program.DurationInWeeks);
+            values.Put(DB_PROGRAM_COLUMN_FREQUENCY_PER_WEEK, program.FrequencyPerWeek);
             db.Update(DB_TABLE_PROGRAM, values, $"{DB_PROGRAM_COLUMN_ID} = ?", new string[] { program.Id.ToString() });
             db.Close();
         }

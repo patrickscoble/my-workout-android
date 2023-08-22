@@ -70,6 +70,8 @@ namespace MyWorkoutAndroid.Fragments
 
                         view.FindViewById<TextView>(Resource.Id.create_update_program_id).Text = Program.Id.ToString();
                         view.FindViewById<EditText>(Resource.Id.create_update_program_name).Text = Program.Name;
+                        view.FindViewById<EditText>(Resource.Id.create_update_program_duration_in_weeks).Text = Program.DurationInWeeks.ToString();
+                        view.FindViewById<EditText>(Resource.Id.create_update_program_frequency_per_week).Text = Program.FrequencyPerWeek.ToString();
 
                         builder.Show();
                         return true;
@@ -89,6 +91,8 @@ namespace MyWorkoutAndroid.Fragments
             AlertDialog alertDialog = (AlertDialog)sender;
 
             Program.Name = alertDialog.FindViewById<EditText>(Resource.Id.create_update_program_name).Text;
+            Program.DurationInWeeks = Convert.ToInt32(alertDialog.FindViewById<EditText>(Resource.Id.create_update_program_duration_in_weeks).Text);
+            Program.FrequencyPerWeek = Convert.ToInt32(alertDialog.FindViewById<EditText>(Resource.Id.create_update_program_frequency_per_week).Text);
 
             DbHelper.UpdateProgram(Program);
             LoadData();
